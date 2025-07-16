@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from blog.models import BlogPost  # ✅ Correct import
 
 class UserSignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -19,3 +20,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['user_type', 'profile_pic', 'address_line1', 'city', 'state', 'pincode']
+
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = BlogPost
+        fields = ['title', 'image', 'category', 'summary', 'content', 'is_draft']
